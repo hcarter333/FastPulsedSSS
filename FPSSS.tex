@@ -44,152 +44,61 @@ We present an updated version of DeSilva's can crusher simulator, first used in 
 \maketitle % title page is now complete
 
 
-\section{Instantaneous Rest Frames, Acceleration and Rapidity} % Section titles are automatically converted to all-caps.
+\section{Introduction} % Section titles are automatically converted to all-caps.
 % Section numbering is automatic.
-Problems in special relativity are often met with trepidation by undergraduate and graduate physics students.  The solutions seem to have little resemblance to their classical counterparts when taken at face value, and students can be left with the feeling that they are relearning mechanics.  Problems that involve acceleration such as rocket propulsion and the twin paradox present even larger obstacles due to confusion about how to treat acceleration in the framework of special relativity.  While the simple one dimensional derivation of rocket velocity with respect to propellant mass appears in many undergraduate texts, its relativistic counterpart seldom does.  The twin paradox, resolved by taking into account that one of the twins is accelerating while the other is not, is ripe for misinterpretation as pointed out by Gruber \cite{gruberi}. These misinterpretations and general confusion about acceleration and the twin paradox led to the following amusing quote from Schild\cite{schildi}:
-
-\begin{quote}
-``A good many physicists believe that this paradox can only be resolved by the general theory of relativity.  They find great comfort in this, because they don't know any general relativity and feel that they don't have to worry about the problem until they decide to learn general relativity."
-\end{quote}
-
-We will show that the simple expression for rapidity can be utilized as a mathematical transform between the solution space of classical mechanics and that of special relativity.  This transform not only makes light work of the problems mentioned above, but it also places the student back in familiar territory by illustrating the relationship between familiar non-relativistic mechanics solutions and their special relativistic counterparts.   
-
-The derivation of the transform requires a few definitions.  The rapidity of a particle moving with velocity   along the x –axis of the laboratory frame can be written as 
-\begin{equation}
-\label{rapidity}
-\frac{v}{c} = tanh\left(\frac{w}{c}\right).
-\end{equation}
-where $c$ is the speed of light.  In most texts, the rapidity is denoted simply as $w$ rather than $w/c$.  We have chosen to scale the rapidity by $1/c$ to simplify our further derivations.  Karapetoff, who wrote one of the most extensive treatments of rapidity\cite{karapetoffi} also noted that 
-\begin{equation}
-\label{gamma}
-\gamma=\frac{dt}{d\tau} = cosh\left(\frac{w}{c}\right).
-\end{equation}
-where $t$ denotes laboratory frame time, and $\tau$ denotes proper time.  
-
-The final expression we require relates an infinitesimal change in velocity, $dv$, as measured in the laboratory frame to an infinitesimal increment in velocity, $dv'$, as measured between two successive instantaneous reference frames, (IRFs).  Rindler gives this expression\cite{rindlerii} as
-\begin{equation}
-\label{gsquared}
-dv=\gamma^{-2}\left(v\right)dv'.
-\end{equation}
-The expression can be derived by first expressing $dv$ as acceleration times an incremental step in time, then Lorentz transforming the product to the moving frame to give
-\begin{eqnarray}
-\label{gsquaredderiv}
-dv& = &\left(\frac{d^2x}{dt^2}\right)dt = \left(\frac{\left(1/\gamma\right)d^2x'}{\left(\gamma^2\right)d\tau^2}\right)\left(\gamma\right)d\tau = \gamma^{-2}dv'.
-\end{eqnarray}
-
-It will now be shown that $w$, the rapidity, defined above in equation (\ref{rapidity}), corresponds to the velocity defined by linearly accumulating the infinitesimal changes in the IRF velocity, $dv'$.  This accumulated non-relativistic velocity  is the same velocity that would be measured by an observer moving with the particle using an accelerometer in conjunction with a stopwatch.   By referencing the accelerometer at each tick of the clock, the co-moving observer can calculate $v'$ as a function of proper time:
-\begin{equation}
-\label{accint}
-v'\left(\tau\right)=\int_0^{\tau} \! a\left(\tau'\right)d\tau'+v'\left(0\right),
-\end{equation}
-where $a\left(\tau\right)$ is the proper acceleration, and $v'\left(0\right)$ is the object's initial velocity.  We have chosen v'(0) to be zero with no loss of generality as we shall see.  Using equations (\ref{rapidity}), (\ref{gsquared}), and (\ref{accint}), it can be shown that 
-\begin{equation}
-\frac{dv}{dv'}=\gamma^{-2}\left(v\right)=\frac{1}{cosh^2\left(\frac{w}{c}\right)}=\frac{dv}{dw},
-\end{equation}
-which implies
-\begin{equation}
-\label{rapnonrel}
-dw=dv'
-\end{equation}
-
-In other words, the oft-mentioned, but rarely expanded-upon rapidity is simply a scaled version of the, (generally time-dependent), non-relativistic velocity $v'$ with respect to the laboratory frame!
-
-Equation (\ref{rapnonrel}) can be integrated to give
-\begin{equation}
-\label{rapinit}
-w=v'+w\left(0\right)
-\end{equation}
-where $w\left(0\right)$ is an initial rapidity that is related to the moving particle's initial laboratory frame velocity by 
-\begin{equation}
-\label{raptanh}
-\frac{w\left(0\right)}{c}=tanh^{-1}\left(\frac{v\left(0\right)}{c}\right)
-\end{equation}
-
-\section{Examples}
-
-With our new-found interpretation of rapidity in hand, let's try a few examples.  Our first example provides a simple derivation of the hyperbolic equations of motion for a uniformly accelerated particle and also illuminates another important aspect of rapidity that follows from the derivation shown above.  In Rindler's original derivation of hyperbolic motion\cite{rinlderi} he calculated the distance traveled by a rocket in the laboratory frame with respect to the travel time as perceived by the passengers of the rocket, this is known as the proper velocity and is denoted by  $dx/d\tau$.  We will re-derive Rindler's expression for proper velocity using the rapidity transform shown above.  The non-relativistic expression for the velocity of a particle starting from rest at the origin and moving with constant acceleration $\alpha$ with respect to the rest frame of the particle is
-\begin{equation}
-\label{rindtransformI}
-v'=\alpha\tau=w.
-\end{equation}
-Inserting this into our transform gives
-\begin{equation}
-\label{transform1}
-\frac{v}{c} = tanh\left(\frac{v'}{c}\right)=tanh\left(\frac{\alpha \tau}{c}\right).
-\end{equation}
-This can be written as
-\begin{equation}
-\label{rapidityexp}
-\frac{1}{c}\frac{dx}{dt} = tanh\left(\frac{\alpha \tau}{c}\right)=\frac{sinh\left(\frac{\alpha \tau}{c}\right)}{cosh\left(\frac{\alpha \tau}{c}\right)}.
-\end{equation}
-Multiplying both sides by the hyperbolic cosine in the denominator and using the substitution defined by (\ref{gamma}) we get 
-\begin{equation}
-\frac{1}{c}\frac{dx}{dt}cosh\left(\frac{\alpha \tau}{c}\right) = \frac{1}{c}\frac{dx}{dt}\frac{dt}{d\tau}=\frac{1}{c}\frac{dx}{d\tau}= sinh\left(\frac{\alpha \tau}{c}\right),
-\end{equation}
-the desired expression for $dx/d\tau$.  To get the distance traveled with respect to $\tau$ we integrate to get
-\begin{equation}
-x=\frac{c^2}{\alpha}cosh\left(\frac{\alpha\tau}{c}\right)-\frac{c^2}{\alpha},
-\end{equation}
-which is identical to Rindler's result\cite{rinlderi}.  A similar derivation can be performed to arrive at
-\begin{equation}
-t =\frac{c}{\alpha}sinh\left(\frac{\alpha\tau}{c}\right)
-\end{equation}
-which can be used to explore the twin paradox.
-
-The following pair of equations can be obtained easily from (\ref{rapidityexp}) 
-\begin{eqnarray}
-\frac{dx}{d\tau} & = & c\ sinh\left(\frac{v'\left(\tau\right)}{c}\right) \nonumber \\
-\frac{d\left(ct\right)}{d\tau} & = & c\ cosh\left(\frac{v'\left(\tau\right)}{c}\right).
-\end{eqnarray}
-These two equations demonstrate that classical velocities can be projected (see Figure~\ref{sunsets}) directly onto the two-dimensional Minkowski space-time axes representing the object's ‘proper speeds’ through laboratory space and time respectively.  The object's proper speed with respect to space is the distance traveled in the laboratory frame with respect to the object's proper time, as defined by Brehme\cite{brehmefour}.  The object's proper speed through laboratory time is $dt/d\tau=\gamma$.
+In our current research project, we need to quench a apherical bulk supderconducting sample of up to 3 cm in diameter.  A little bit of research revealed Alan Desilva's classic, 1994 can crusher paper\cite{desilvacan}.  This paper not only pointed an appratus that could provide the necessary thousand Gauss pulsed magnetic field with a < 100 microsecond pulse width, but also mentioned a simulater that Dr. DeSilva's team had used to model their can crusher work.  We were not able to locate a similar simulator for our prupoes that was freely available.  Dr. DeSilva was kind enough to locate the original IDL simulator code and forward it to us.  
+\\
+\section{Making the Simultor Accessible}
+While IDL is still quite ubiquitous, and a free version known as GDL can be installed on Linux platforms, we decided to port the code to Python that would execute within the SageMath platform.  This decision was made based on two criteria.  First, Python is a common known language among young phycisists, second, the National Science Foundation and Google have funded a cloud based implementtion of SageMath with a web browser based interface that is publicly accessible.  By making the port mentioned, we opened it up to the scientific community in a way that made it freely accessible and usable in a matter of minutes with no installssoftware installs, or operating system concerns.
+In addition to the language port, we also made the simulation object oriented.  While only the most rudimentary object architected structures ahs been put in place, it has already allowed us to simulate different solenoid parameters and their pertinence to our research with ease.  The basic object in the simulator is a member of the Crusher class.  Each Crusher object has its own set of parameters such as the numbe of coils in the solenoid, the temeperature sensitvie resistivity of the solenoid, and the temeparature that the solenoid is to be operated in.
+These simple additions allowed us to create simulations that could answer many questinos about our experimental design without the expense of building and testing different pulsed magnetic solenoids.  Quesitons like, 
+\\
+1.  How does the transient response of the solenoid driving current change with respect to the operating temperature? (figure 1) 
+\\
+2.  How doe the maximum magentic field change with the radius of the solenoid? (figure 2) 
+\\
+3.  How does the transient response of the solenoid driving current change with respect to the solenoid radius? (figure 1) 
+\\
+By creating multiple solenoid objects with different paraemeters pertaining to each of the above scenrios, these questions could easily be answerd.  A sample result pertaining to each of the above scenarios is shown in the figures below.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=5in]{hypproj4.png}
+\includegraphics[width=2.5in]{42Current.PNG}
 % Notice the width specification.  Photographs should normally have a
 % resolution of approximately 300 pixels per inch when printed, that is,
 % a total width of about 1000 pixels for a photo to be printed one column
 % wide.  Note also that this included photo is in .jpg format even though 
 % a .tiff version should be submitted for final production.
-\caption{Projection of Classical Velocity into Minkowski Velocity Space}
+\caption{Current vs. time for the same solenoid at room temp and at liquid helium temperature.}
 \label{sunsets}
 \end{figure}
-
-For a complete treatment of proper velocity, we refer the reader to Robert Flynn's excellent primer on spacecraft navigation\cite{flynn}.  Note that it can immediately be seen that as the object's proper speed increases, the rate of progression of laboratory time with respect to proper time also increases due to time dilation.  In other words, as the object's relative speed through laboratory space increases, its relative speed through laboratory time decreases as pointed out by Brehme\cite{brehmegeo} and popularized by Greene\cite{greene}.
-
-In the introduction, reference was made to the relativistic rocket propulsion problem.  Goldstein, in his graduate mechanics text\cite{goldsteini}, begins his version of the problem by noting that ``The theory of rocket motion developed in Exercise 3, Chapter 1, no longer applies in the relativistic region, in part because there is no longer conservation of mass."  He then asks the student to show that a different differential equation holds in the relativistic regime,
-\begin{equation}
-m\frac{dv}{dm}+a\left(1-\frac{v^2}{c^2}\right)=0,
-\end{equation}
-and to show that the solution to this new equation can be written as 
-\begin{equation}
-\frac{v}{c}=\frac{\left(1-\frac{m}{m_o}\right)^{\frac{2a}{c}}}{\left(1+\frac{m}{m_o}\right)^{\frac{2a}{c}}}
-\end{equation}
-
-Using the transformation method illustrated here, no new differential equation is necessary.  We simply transform the solution of the non-relativistic rocket problem for a rocket starting from rest, 
-\begin{equation}
-v=a\ ln\left(\frac{m_o}{m_f}\right)
-\end{equation}
-where $a$ is the exhaust velocity of the propellant with respect to the rocket,   $m_o$ is the initial mass of the rocket and $m_f$ is the final mass of the rocket.  The transform yields 
-\begin{equation}
-\frac{v}{c}=tanh\left(\frac{a}{c} ln\left(\frac{m_o}{m_f}\right)\right).
-\end{equation}
-Keeping in mind that the hyperbolic tangent can be written as
-\begin{equation}
-tanh\left(u\right)=\frac{e^u-e^{-u}}{e^u+e^{-u}},
-\end{equation}
-a short bit of algebra shows
-\begin{equation}
-\frac{v}{c}=\frac{\left(1-\frac{m_f}{m_o}\right)^{\frac{2a}{c}}}{\left(1+\frac{m_f}{m_o}\right)^{\frac{2a}{c}}},
-\end{equation}
-as indicated by Goldstein.
-
-\section{Conclusion}
-
-We've shown that the unassuming expression for rapidity can be used to transform solutions of kinematical problems from non-relativistic mechanics directly to their relativistic counterparts.  In addition to making easy work of relativistic mechanics, the method serves as a useful pedagogical tool, demonstrating that relativistic solutions can be seen as a direct consequence of their classical progenitors.  By separating the rapidity expression into its hyperbolic sine and cosine terms, it was shown that classical velocities can be projected directly onto their proper velocity counterparts.  This projection serves to further establish an intuitive relationship between classical and relativistic mechanics and also provides an effective springboard for discussions of the hyperbolic geometric nature of Minkowski space-time.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=2.5in]{HBigSmall42.PNG}
+% Notice the width specification.  Photographs should normally have a
+% resolution of approximately 300 pixels per inch when printed, that is,
+% a total width of about 1000 pixels for a photo to be printed one column
+% wide.  Note also that this included photo is in .jpg format even though 
+% a .tiff version should be submitted for final production.
+\caption{Field available for different solenoid radii corresponding to different supercondutor samples to be quenched.}
+\label{sunsets}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=2.5in]{bigsmallcurrent42.PNG}
+% Notice the width specification.  Photographs should normally have a
+% resolution of approximately 300 pixels per inch when printed, that is,
+% a total width of about 1000 pixels for a photo to be printed one column
+% wide.  Note also that this included photo is in .jpg format even though 
+% a .tiff version should be submitted for final production.
+\caption{Field available for different solenoid radii corresponding to different supercondutor samples to be quenched.}
+\label{sunsets}
+\end{figure}
+\section{Conclusions}
+The code form Dr. DeSilva's 1994 project has been ressurected and made freely available to anyone who would like to use it or work on the project at \url{https://github.com/hcarter333/cancrusher}.  We have been able to simplify several experimental design decisions using this simulation code that gives us an advanced picture of our pulsed magentic fiedl apparatus will behave without having to actually construct equipment and perform time consuming characterizations.
 
 \begin{acknowledgments}
-The authors gratefully acknowledge helpful discussions with and suggestions from George Goedecke and Stephen Fulling.  HBC was supported by NSF Grant \#0968269.\end{acknowledgments}
+The authors gratefully acknowledge helpful discussions with and suggestions from Alan DeSilva.  HBC was supported by a grant from the Texas Academy of Sciences \#0968269.\end{acknowledgments}
 
 \begin{thebibliography}{99}
 % The numeral (here 99) in curly braces is nominally the number of entries in
