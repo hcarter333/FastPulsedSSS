@@ -7,6 +7,7 @@
 \usepackage{amsmath}  % needed for \tfrac, \bmatrix, etc.
 \usepackage{amsfonts} % needed for bold Greek, Fraktur, and blackboard bold
 \usepackage{graphicx} % needed for figures
+\usepackage{listings}
 
 \begin{document}
 
@@ -36,7 +37,7 @@
 \date{\today}
 
 \begin{abstract}
-We present an updated version of DeSilva's can crusher simulator, first used in 1994.  The original simulator has been updated from IDL to Python that runs in the SageMath framework.  The project has been open-sourced.  The code has alos been re-written in an object oriented architecture that allows for simple input of solenoid parameters.  This allows multiple solenoids with varying design envelopes to be simulated and compared.  We presesnt a brief note on the faciliteis the simulator now provids, and the basics of its use.  The simulator still serves perhaps most usefully in conjunction with a can crusher apparatus in an undergraduate laboratory setting.  In addition to the above, the code clearly points out the chain rule of differentiation and how it applies to dynamic experimetnal situations.
+We present an updated version of DeSilva's can crusher simulator, first used in 1994.  The original simulator has been updated from IDL to Python that runs in the SageMath framework.  The project has been open-sourced.  The code has also been re-written in an object oriented architecture that allows for simple input of solenoid parameters.  This allows multiple solenoids with varying design envelopes to be simulated and compared.  We present a brief note on the facilities the simulator now provides, and the basics of its use.  The simulator still serves perhaps most usefully in conjunction with a can crusher apparatus in an undergraduate laboratory setting.  In addition to the above, the code clearly points out the chain rule of differentiation and how it applies to dynamic experimental situations.
 \end{abstract}
 % AJP requires an abstract for all regular article submissions.
 % Abstracts are optional for submissions to the "Notes and Discussions" section.
@@ -46,24 +47,42 @@ We present an updated version of DeSilva's can crusher simulator, first used in 
 
 \section{Introduction} % Section titles are automatically converted to all-caps.
 % Section numbering is automatic.
-In our current research project, we need to quench a apherical bulk supderconducting sample of up to 3 cm in diameter.  A little bit of research revealed Alan Desilva's classic, 1994 can crusher paper\cite{desilvacan}.  This paper not only pointed an appratus that could provide the necessary thousand Gauss pulsed magnetic field with a < 100 microsecond pulse width, but also mentioned a simulater that Dr. DeSilva's team had used to model their can crusher work.  We were not able to locate a similar simulator for our prupoes that was freely available.  Dr. DeSilva was kind enough to locate the original IDL simulator code and forward it to us.  
-\\
-\section{Making the Simultor Accessible}
-While IDL is still quite ubiquitous, and a free version known as GDL can be installed on Linux platforms, we decided to port the code to Python that would execute within the SageMath platform.  This decision was made based on two criteria.  First, Python is a common known language among young phycisists, second, the National Science Foundation and Google have funded a cloud based implementtion of SageMath with a web browser based interface that is publicly accessible.  By making the port mentioned, we opened it up to the scientific community in a way that made it freely accessible and usable in a matter of minutes with no installssoftware installs, or operating system concerns.
-In addition to the language port, we also made the simulation object oriented.  While only the most rudimentary object architected structures ahs been put in place, it has already allowed us to simulate different solenoid parameters and their pertinence to our research with ease.  The basic object in the simulator is a member of the Crusher class.  Each Crusher object has its own set of parameters such as the numbe of coils in the solenoid, the temeperature sensitvie resistivity of the solenoid, and the temeparature that the solenoid is to be operated in.
-These simple additions allowed us to create simulations that could answer many questinos about our experimental design without the expense of building and testing different pulsed magnetic solenoids.  Quesitons like, 
+
+Our current research project, necessitated quickly quenching a spherical, superconducting sample of up to 3 cm in diameter.  This required a pulsed magnetic field of up to 2 kG in magnitude with a pulse width of less then 100 microseconds.  The imploding soda can apparatus described by Alan DeSilva in his 1994 paper\cite{desilvacan} in this journal fit the bill perfectly.  Dr. DeSilva's paper also mentioned a simulator used to model their can crusher work.  Dr. DeSilva was kind enough to locate the original IDL simulator code and forward it to us.  \\
+\section{Making the Simulator Accessible}
+While IDL is still quite ubiquitous, and a free version known as GDL can be installed on Linux platforms, we decided to port the code to Python that would execute within the SageMath platform.  This decision was reached because our teams is familiar with Python and the language is a commonly known language among young physicists, In addition to this, the National Science Foundation and Google have funded a cloud based implementation of SageMath with a web browser based interface that is publicly accessible.  By making the port to Python/SageMath, we opened access to the simulator to the scientific community in a way that made it freely accessible and usable in a matter of minutes with no software installs, or operating system concerns.
+In addition to the language port, we changed to an object oriented architecture.  While only the most rudimentary object architected structures has been put in place, it has already allowed us to simulate different solenoid parameters and their pertinence to our research with ease.  The basic object in the simulator is a member of the Crusher class.  Each Crusher object has its own set of parameters such as the number of coils in the solenoid, the temperature sensitive resistivity of the solenoid, and the temperature that the solenoid is to be operated in.  For example, the following code sets up the solenoid object with a radius of $3.8 cm$, an initial power supply voltage of $5000 Volts$, and an operating temperature of $4.2 K$.  the set\_movecan method tells the code we're simulating an immovable object, in our case, a solid Pb sample, as opposed to a compressible soda can.
+\\\\\\
+\lstset{language=Python}
+\begin{lstlisting}[frame=single]
+load('./crushersim.sage')
+#Set simulation time once
+tickcount = 290
+#This simulation calculates result for the coil size appropriate
+#to the small YBCO sample
+crushR = Crusher()
+crushR.setr(3.8e-2)
+crushR.setVnought(5000)
+crushR.set_movecan(False)
+crushR.setTemp(4.2)
+crushR.simulate(tickcount)
+#Find the maximum current
+
+#Now plot the results ...
+\end{lstlisting}
+These simple additions allowed us to create simulations that could answer many questions about our experimental design without the expense of building and testing different pulsed magnetic solenoids.  Questions like, 
 \\
 1.  How does the transient response of the solenoid driving current change with respect to the operating temperature? (figure 1) 
 \\
-2.  How doe the maximum magentic field change with the radius of the solenoid? (figure 2) 
+2.  How does the maximum magnetic field change with the radius of the solenoid? (figure 2) 
 \\
 3.  How does the transient response of the solenoid driving current change with respect to the solenoid radius? (figure 1) 
 \\
-By creating multiple solenoid objects with different paraemeters pertaining to each of the above scenrios, these questions could easily be answerd.  A sample result pertaining to each of the above scenarios is shown in the figures below.
+By creating multiple solenoid objects with different parameters pertaining to each of the above scenarios, these questions could easily be answered.  A sample result pertaining to each of the above scenarios is shown in the figures below.
 
-\begin{figure}[h!]
+\begin{figure}[page]
 \centering
-\includegraphics[width=2.5in]{42Current.PNG}
+\includegraphics[width=5in]{42Current.PNG}
 % Notice the width specification.  Photographs should normally have a
 % resolution of approximately 300 pixels per inch when printed, that is,
 % a total width of about 1000 pixels for a photo to be printed one column
@@ -74,7 +93,7 @@ By creating multiple solenoid objects with different paraemeters pertaining to e
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=2.5in]{HBigSmall42.PNG}
+\includegraphics[width=5in]{HBigSmall42.PNG}
 % Notice the width specification.  Photographs should normally have a
 % resolution of approximately 300 pixels per inch when printed, that is,
 % a total width of about 1000 pixels for a photo to be printed one column
@@ -85,7 +104,7 @@ By creating multiple solenoid objects with different paraemeters pertaining to e
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=2.5in]{bigsmallcurrent42.PNG}
+\includegraphics[width=5in]{bigsmallcurrent42.PNG}
 % Notice the width specification.  Photographs should normally have a
 % resolution of approximately 300 pixels per inch when printed, that is,
 % a total width of about 1000 pixels for a photo to be printed one column
