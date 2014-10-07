@@ -52,10 +52,10 @@ Our study of the dynamic behavior of rapidly quenched bulk superconductors has c
 \\
 \\
 \section{Language Port and Architecture}
-While IDL is still a ubiquitous language, and a free version known as GDL can be installed on Linux platforms, we decided to port the code to Python executed within the SageMath platform.  Our team is familiar with Python and with the advent of packages like NumPy and SciPy, the language is gaining a certain noteriety with young physicists, SageMath has a cloud based implementation that has been funded by the National Science Foundation and Google. The user interface of this cloud-based software implementation is  accessible to the public through any web browser.  Consequently, anyone can make use of the SageMath platform and the ported simulator on any operting system that supports a web browser.  There are no operating system or software installation considerations to be made.
+While IDL is still a ubiquitous language, and a free version known as GDL can be installed on Linux platforms, we decided to port the code to Python executed within the SageMath platform.  Our team is familiar with Python and with the advent of packages like NumPy and SciPy, the language is gaining a certain noteriety with young physicists, SageMath has a cloud based implementation that has been funded by the National Science Foundation and Google. The user interface of this cloud-based software implementation is accessible to the public through any web browser.  Consequently, anyone can make use of the SageMath platform and the ported simulator on any operating system that supports a web browser.  There are no operating system or software installation considerations to be made.
 \\
 \\
-In addition to the language port, we re-architected the simulator to be object oriented.  While only the most rudimentary object architected structure has been put in place, it has already allowed us to simulate different solenoid parameters and their pertinence to our research with ease.  The basic object in the simulator is a member of the Crusher class.  Each Crusher object has its own set of parameters that fully describe a can crusher apparatus design configuration.  Among these configurable parameters  are the radius and the number of coils in the solenoid, the temperature sensitive resistivity of the solenoid, and the temperature of the solenoids operating environment.  As a concrete example, the following code sets up the Crusher object with a solenoid radius of $3.8 cm$, an initial power supply voltage of $5000\;\;Volts$, and an operating temperature of $4.2\;\;degrees\;\;K$.  the set\_movecan method tells the Crushcer object that we're simulating pulsing the magnetic field with a solid core in the solenoid's center, rather than a compressible soda can.
+In addition to the language port, we re-architected the simulator to be object oriented.  While only the most rudimentary object architected structure has been put in place, it has already allowed us to simulate different solenoid parameters and their pertinence to our research with ease.  The basic object in the simulator is a member of the Crusher class.  Each Crusher object has its own set of parameters that fully describe a can crusher apparatus design configuration.  Among these configurable parameters  are the radius and the number of coils in the solenoid, the temperature sensitive resistivity of the solenoid, and the temperature of the solenoids operating environment.  As a concrete example, the following code sets up the Crusher object with a solenoid radius of $3.8 cm$, an initial power supply voltage of $5000\;\;Volts$, and an operating temperature of $4.2\;\;degrees\;\;K$.  the set\_movecan method tells the Crusher object that we're simulating pulsing the magnetic field with a solid core in the solenoid's center, rather than a compressible soda can.
 \\\\\\
 \lstset{language=Python}
 \begin{lstlisting}[frame=single]
@@ -77,22 +77,22 @@ crushR.simulate(tickcount)
 \section{Simulator Applications and Usage Instructions}
 We created simulations that answered many questions about our experimental design without the expense of building and testing different pulsed magnetic solenoids.  Some concrete examples of these questions are: 
 \\
-1.  How does the transient response of the solenoid driving current change with respect to the operating temperature? This question was answered by configuring two Crusher objects with identical parameters excpet for the operating envrionment temperature.  This parpameter was changed using the objects setTemp method.  See figure 1 for results.
+1.  How does the transient response of the solenoid driving current change with respect to the operating temperature? This question was answered by configuring two Crusher objects with identical parameters except for the operating environment temperature.  This parameter was changed using the objects setTemp method.  See figure 1 for results.
 \\
-2.  How does the maximum magnetic field available for a fixed initial power supply voltage change with respect to the radius of the solenoid? The initial setup was the same as in the first scenario; instantiate two Crusher objects with identical paramters.  The solenoid radii were then configured using the setr method.  Figure 2 shows the magnetic field with respet to distance from the center of the along the z axis --- transverse to the plane of the solenoid --- at a fixed radius incrementally smaller than the solenoid. 
+2.  How does the maximum magnetic field available for a fixed initial power supply voltage change with respect to the radius of the solenoid? The initial setup was the same as in the first scenario; instantiate two Crusher objects with identical parameters.  The solenoid radii were then configured using the setr method.  Figure 2 shows the magnetic field with respect to distance from the center of the along the z axis --- transverse to the plane of the solenoid --- at a fixed radius incrementally smaller than the solenoid. 
 \\
-3.  The final example asks, "How does the pulse width  of the solenoid driving current change for solenoid designs with diferent radii? Figure 3 shows the results where once again, the radii of the two solenoids has been defined with the setr method. 
+3.  The final example asks, "How does the pulse width  of the solenoid driving current change for solenoid designs with different radii? Figure 3 shows the results where once again, the radii of the two solenoids have been defined with the setr method. 
 \\
 \\
-To make use of the simulator, simply perform the following steps.
+The following steps detail how to install and use the simulator.
 \\
-1.  Downlod the latest simulator release file crushersim.sage from \url{https://github.com/hcarter333/cancrusher} .  Also download one of the example simulations such as sim\_no\_sc\_42\_5000.sage
+1.  Download the latest simulator release file crushersim.sage from \url{https://github.com/hcarter333/cancrusher} .  Also download one of the example simulations such as sim\_no\_sc\_42\_5000.sage
 \\
-2.  Create an account for yourself at \url{https://cloud.sagemath.com} .  Create a new project and uplaod both of the files from step 1 into the project.
+2.  Create an account for yourself at \url{https://cloud.sagemath.com} .  Create a new project and upload both of the files from step 1 into the project.
 \\
 3.  Open the newly created project file sim\_no\_sc\_42\_5000.sage .  Click in the first cell, and then click on the 'Run' button in the upper left-hand corner of the interface.  After a short runtime, (on the order of thirty seconds depending on cloud load), you should see simulator results similar to the figures in this article.
 \\
-4.  Using the Wiki documentation avaiable at the github repostitory, \url{https://github.com/hcarter333/cancrusher/wiki}, customize the simulator as you please, and re-run.
+4.  Using the Wiki documentation available at the github repository, \url{https://github.com/hcarter333/cancrusher/wiki}, customize the simulator as you please, and re-run.
 
 \begin{figure}[page]
 \centering
@@ -128,10 +128,10 @@ To make use of the simulator, simply perform the following steps.
 \label{sunsets}
 \end{figure}
 \section{Conclusions}
-The code form Dr. DeSilva's 1994 project has been ressurected and made freely available to anyone who would like to either use it or contribute to the project at \url{https://github.com/hcarter333/cancrusher}.  We have tested the feasiblity of several experimental design decisions using the simulator to produce a picture of how our pulsed magentic field apparatus will behave without having to actually construct equipment and perform time consuming characterizations.
+The code form Dr. DeSilva's 1994 project has been resurrected and made freely available to anyone who would like to either use it or contribute to the project at \url{https://github.com/hcarter333/cancrusher}.  We have tested the feasibility of several experimental design decisions using the simulator to produce a picture of how our pulsed magnetic field apparatus will behave without having to actually construct equipment and perform time consuming characterizations.
 \\
 \\
-We have plans to utilize the simulator in an online interactive demonstration laboratory\cite{ILD}.  In this small groups of students will be provided with workstations with the simulator pre-loaded into classroom SageMath accounts.  Based on the desribed parameters of the can crusher to be used in the demonstration, students will be asked to run a simulation and predict various measurable parameters of the demonstration such as the transient current measured using a pickup coil placed inside the can, or the temperature of the can immediately after a can crusher shot as measured by an infrared camera such as the Fluke Ti95.
+We have plans to utilize the simulator in an online interactive demonstration laboratory\cite{ILD}.  In this laboratory, small groups of students will be provided with workstations which have the simulator pre-loaded into classroom SageMath accounts.  Based on the described parameters of the can crusher to be used in the demonstration, students will be asked to run a simulation and predict various measurable parameters of the demonstration such as the transient current measured using a pickup coil placed inside the can, and the temperature of the can immediately after a can crusher shot as measured by an infrared camera such as the Fluke Ti95.  Their results will be displayed along with the measured results and used as the basis for classroom discussion of the underlying theoretical and experimental concepts.
 
 \begin{acknowledgments}
 The authors gratefully acknowledge helpful discussions with and suggestions from Alan DeSilva.  HBC was supported by a grant from the Texas Academy of Sciences.\end{acknowledgments}
