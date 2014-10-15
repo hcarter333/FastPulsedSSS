@@ -19,6 +19,10 @@
 }
 % In a long title you can use \\ to force a line break at a certain location.
 
+\author{Hamilton B. Carter}
+\email{hcarter333@tamu.edu}
+\affiliation{Department of Physics, Texas A\&M University, TX 77843}
+
 \author{Alan DeSilva}
 \email{hcarter333@tamu.edu} % optional
 % optional second address
@@ -27,10 +31,6 @@
 % \author statement.
 \affiliation{Department of Physics, University of Maryland, College Park, MD 77843}
 % Please provide a full mailing address here.
-
-\author{Hamilton B. Carter}
-\email{hcarter333@tamu.edu}
-\affiliation{Department of Physics, Texas A\&M University, TX 77843}
 
 % See the REVTeX documentation for more examples of author and affiliation lists.
 
@@ -78,16 +78,11 @@ crushR.simulate(tickcount)
 We created simulations that answered many questions about our experimental design without the expense of building and testing different pulsed magnetic solenoids.  Some concrete examples of these questions are: 
 \\
 \\
-1.  How does the transient response of the solenoid driving current change with respect to the operating temperature? This question was answered by configuring two Crusher objects with identical parameters except for the operating environment temperature.  This parameter was changed using the objects' setTemp method.  Figure 1 shows the graphed results.
-\\
-\\
-2.  How does the maximum magnetic field available for a fixed initial power supply voltage change with respect to the radius of the solenoid? The initial setup was the same as in the first scenario; instantiate two Crusher objects with identical parameters.  The solenoid radii were then configured using the setr method.  Figure 2 shows the magnetic field with respect to distance from the center of the solenoid along the z axis --- transverse to the plane of the solenoid --- at a fixed radius incrementally smaller than the radius of the solenoid. 
-\\
-\\
-3.  The final example asks, "How does the pulse width  of the solenoid driving current change for solenoid designs with different radii? Figure 3 shows the results where, once again, the radii of the two solenoids have been defined with the setr method. 
-\\
-\\
-
+\begin{enumerate}
+\item How does the transient response of the solenoid driving current change with respect to the operating temperature? This question was answered by configuring two Crusher objects with identical parameters except for the operating environment temperature.  This parameter was changed using the objects' setTemp method.  Figure 1 shows the graphed results.
+\item How does the maximum magnetic field available for a fixed initial power supply voltage change with respect to the radius of the solenoid? The initial setup was the same as in the first scenario; instantiate two Crusher objects with identical parameters.  The solenoid radii were then configured using the setr method.  Figure 2 shows the magnetic field with respect to distance from the center of the solenoid along the z axis --- transverse to the plane of the solenoid --- at a fixed radius incrementally smaller than the radius of the solenoid. 
+\item The final example asks, "How does the pulse width  of the solenoid driving current change for solenoid designs with different radii? Figure 3 shows the results where, once again, the radii of the two solenoids have been defined with the setr method.
+\end{enumerate}
 \begin{figure}[page]
 \centering
 \includegraphics[width=5in]{42Current.PNG}
@@ -96,7 +91,7 @@ We created simulations that answered many questions about our experimental desig
 % a total width of about 1000 pixels for a photo to be printed one column
 % wide.  Note also that this included photo is in .jpg format even though 
 % a .tiff version should be submitted for final production.
-\caption{Current vs. time for the same solenoid at room temp and at liquid helium temperature.}
+\caption{Transient current response for the same solenoid at room temp and at liquid helium temperature.}
 \label{sunsets}
 \end{figure}
 \begin{figure}[h!]
@@ -107,7 +102,7 @@ We created simulations that answered many questions about our experimental desig
 % a total width of about 1000 pixels for a photo to be printed one column
 % wide.  Note also that this included photo is in .jpg format even though 
 % a .tiff version should be submitted for final production.
-\caption{Field available for different solenoid radii corresponding to different supercondutor samples to be quenched.}
+\caption{z component of the magnetic field at a constant radius, incrementally smaller than the solenoid radius.  The horizontal scale is distance in the z direction in cm along the axis perpendicular to the plane of the solenoid.}
 \label{sunsets}
 \end{figure}
 \begin{figure}[h!]
@@ -118,7 +113,7 @@ We created simulations that answered many questions about our experimental desig
 % a total width of about 1000 pixels for a photo to be printed one column
 % wide.  Note also that this included photo is in .jpg format even though 
 % a .tiff version should be submitted for final production.
-\caption{Field available for different solenoid radii corresponding to different supercondutor samples to be quenched.}
+\caption{Transient current responses for solenoids of different radii.}
 \label{sunsets}
 \end{figure}
 \section{Conclusions}
